@@ -45,7 +45,7 @@ class TagDetailView(generics.ListAPIView):
 
 class TagView(generics.ListAPIView):
     """ View for tags in models """
-    serializer_class = TagSerializer
+    serializer_class = TagSerializer()
     queryset = Tag.objects.all()
     permission_classes = [permissions.AllowAny]
 
