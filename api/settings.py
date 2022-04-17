@@ -101,11 +101,13 @@ DATABASES = {
 }
 
 # rest_framework
+# search param ('q' instead of 'search' in query param)
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework_simplejwt.authentication.JWTAuthentication"],
     "DEFAULT_RENDERER_CLASSES": ["rest_framework.renderers.JSONRenderer"],
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.DjangoModelPermissions",),
+    "SEARCH_PARAM": "q",
 }
 
 # Password validation
@@ -199,3 +201,12 @@ SIMPLE_JWT = {
 }
 
 CORES_ORIGIN_WHITELIST = ["http://localhost:3000", "http://127.0.0.1:3000"]
+
+# email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'revani.web@gmail.com'
+EMAIL_HOST_PASSWORD = 'cnhqjpnnoznsesww'
+DEFAULT_FROM_EMAIL = 'revani@yandex.ru'
