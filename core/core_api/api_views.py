@@ -45,8 +45,8 @@ class TagDetailView(generics.ListAPIView):
 
 class TagView(generics.ListAPIView):
     """ View for tags in models """
-    serializer_class = TagSerializer()
     queryset = Tag.objects.all()
+    serializer_class = TagSerializer
     permission_classes = [permissions.AllowAny]
 
 
@@ -98,11 +98,16 @@ class ProfileView(generics.GenericAPIView):
         return Response({"user": UserSerializer(request.user, context=self.get_serializer_context()).data, })
 
 
-class CommentView(generics.ListCreateAPIView):
-    """ Class for view comments """
+class AddCommentView(generics.CreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+class GetCommentsView(generics.ListAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
         post_slug = self.kwargs['post_slug'].lower()

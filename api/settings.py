@@ -45,11 +45,12 @@ SYSTEM_APPS = [
 
 PROJECT_APPS = [
     'rest_framework',
-    'core',
+    'core.apps.CoreConfig',
     'ckeditor',
     'ckeditor_uploader',
     'taggit',
     'taggit_serializer',
+    'corsheaders',
 ]
 
 INSTALLED_APPS = SYSTEM_APPS + PROJECT_APPS
@@ -210,3 +211,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.getenv('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 DEFAULT_FROM_EMAIL = os.getenv('EMAIL_DEFAULT')
+
+# cors
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
